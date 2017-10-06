@@ -123,7 +123,7 @@ compile 'com.gcssloop.widget:rclayout:1.4.1@aar'
 
 #### v1.4.1
 
-修复圆角状态下Padding值问题。
+修复圆形状态下Padding值问题。
 
 #### v1.4.0
 
