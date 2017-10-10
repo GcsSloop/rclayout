@@ -97,7 +97,7 @@ allprojects {
     repositories {
         jcenter()
         // 私有仓库地址
-       maven { url "http://lib.gcssloop.com:8081/repository/gcssloop-central/" }
+       maven { url "http://lib.gcssloop.com/repository/gcssloop-central/" }
     }
 }
 ```
