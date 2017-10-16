@@ -84,7 +84,7 @@ RCRelativeLayout(Round Corner RelativeLayout)，使用圆角布局包裹需要�
 #### 3.2 描边属性
 
 描边宽度`stroke_width`默认情况下数值为 0，即不存在描边效果。  
-描边高度`stroke_color`默认情况下为白色，允许自定义颜色。
+描边颜色`stroke_color`默认情况下为白色，允许自定义颜色。
 
 ### 4.添加方法
 
