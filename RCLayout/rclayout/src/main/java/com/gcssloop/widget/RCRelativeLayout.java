@@ -137,6 +137,7 @@ public class RCRelativeLayout extends RelativeLayout {
             canvas.drawPath(mStrokePath, mPaint);
 
         }
+        mPaint.setColor(Color.WHITE);
         mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mPaint.setStrokeWidth(0);
         mPaint.setStyle(Paint.Style.FILL);
