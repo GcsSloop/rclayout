@@ -121,6 +121,10 @@ compile 'com.gcssloop.widget:rclayout:1.4.1@aar'
 
 ## 更新日志
 
+#### v1.4.2
+
+尝试修复屏幕像素密度过低时出现边框问题。
+
 #### v1.4.1
 
 修复圆形状态下Padding值问题。
