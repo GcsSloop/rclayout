@@ -107,7 +107,7 @@ allprojects {
 在需要添加依赖的 Module 下添加以下信息，使用方式和普通的远程仓库一样。
 
 ```groovy
-compile 'com.gcssloop.widget:rclayout:1.4.1@aar'
+compile 'com.gcssloop.widget:rclayout:1.4.3@aar'
 ```
 
 
@@ -120,6 +120,10 @@ compile 'com.gcssloop.widget:rclayout:1.4.1@aar'
 <a href="http://www.gcssloop.com/info/about/" target="_blank"> <img src="http://ww4.sinaimg.cn/large/005Xtdi2gw1f1qn89ihu3j315o0dwwjc.jpg" width="300"/> </a>
 
 ## 更新日志
+
+#### v1.4.3
+
+优化性能。
 
 #### v1.4.2
 

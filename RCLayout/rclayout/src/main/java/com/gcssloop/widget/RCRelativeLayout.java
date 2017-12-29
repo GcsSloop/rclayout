@@ -53,6 +53,7 @@ public class RCRelativeLayout extends RelativeLayout {
     private int mStrokeWidth;               // 描边半径
     private Region mAreaRegion;             // 内容区域
     private int mEdgeFix = 10;              // 边缘修复
+    private RectF mLayer;                   // 画布图层大小
 
     public RCRelativeLayout(Context context) {
         this(context, null);
@@ -100,6 +101,7 @@ public class RCRelativeLayout extends RelativeLayout {
 
     @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        mLayer = new RectF(0, 0, w, h);
         RectF areas = new RectF();
         areas.left = getPaddingLeft();
         areas.top = getPaddingTop();
@@ -122,8 +124,7 @@ public class RCRelativeLayout extends RelativeLayout {
     }
 
     @Override protected void dispatchDraw(Canvas canvas) {
-        canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas
-                .ALL_SAVE_FLAG);
+        canvas.saveLayer(mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
         if (mStrokeWidth > 0) {
             mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
