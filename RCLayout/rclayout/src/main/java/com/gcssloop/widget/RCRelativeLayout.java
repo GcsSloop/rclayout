@@ -79,6 +79,7 @@ public class RCRelativeLayout extends RelativeLayout {
                 R.styleable.RCRelativeLayout_round_corner_bottom_left, roundCorner);
         int roundCornerBottomRight = ta.getDimensionPixelSize(
                 R.styleable.RCRelativeLayout_round_corner_bottom_right, roundCorner);
+        ta.recycle();
 
         radii[0] = roundCornerTopLeft;
         radii[1] = roundCornerTopLeft;

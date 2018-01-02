@@ -111,7 +111,7 @@
 
     <com.gcssloop.widget.RCRelativeLayout
         android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         app:round_as_circle="true"
         app:round_corner="30dp"

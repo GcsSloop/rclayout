@@ -18,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bgclick(View view) {
-        Toast.makeText(this, "BgClick", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Bg Click", Toast.LENGTH_SHORT).show();
     }
 }
