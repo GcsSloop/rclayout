@@ -128,8 +128,14 @@ public class RCRelativeLayout extends RelativeLayout {
         canvas.saveLayer(mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
         if (mStrokeWidth > 0) {
-            mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+            // 支持半透明描边，将与描边区域重叠的内容裁剪掉
+            mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+            mPaint.setColor(Color.WHITE);
             mPaint.setStrokeWidth(mStrokeWidth * 2);
+            mPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawPath(mClipPath, mPaint);
+            // 绘制描边
+            mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
             mPaint.setColor(mStrokeColor);
             mPaint.setStyle(Paint.Style.STROKE);
             canvas.drawPath(mClipPath, mPaint);

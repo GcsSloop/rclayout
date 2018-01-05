@@ -57,7 +57,7 @@ dependencies {
 ext {
     GROUP_ID = "com.gcssloop.widget"
     ARTIFACT_ID = "rclayout"
-    VERSION = "1.4.4"
+    VERSION = "1.4.5"
 }
 
 apply from: "/Applications/nexus/pack/pack-upload.gradle"

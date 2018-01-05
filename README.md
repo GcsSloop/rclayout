@@ -123,6 +123,10 @@ compile 'com.gcssloop.widget:rclayout:1.4.4@aar'
 
 ## 更新日志
 
+#### v1.4.5
+
+描边支持半透明。
+
 #### v1.4.4
 
 优化性能(回收 TypedArray)。
