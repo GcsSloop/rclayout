@@ -147,6 +147,13 @@ public class RCRelativeLayout extends RelativeLayout {
         canvas.restore();
     }
 
+    @Override public void draw(Canvas canvas) {
+        canvas.save();
+        canvas.clipPath(mClipPath);
+        super.draw(canvas);
+        canvas.restore();
+    }
+
     @Override public boolean dispatchTouchEvent(MotionEvent ev) {
         if (!mAreaRegion.contains((int) ev.getX(), (int) ev.getY())) {
             return false;

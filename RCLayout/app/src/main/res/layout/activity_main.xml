@@ -116,8 +116,9 @@
         app:round_as_circle="true"
         app:round_corner="30dp"
         android:padding="10dp"
+        android:background="#fff"
         app:round_corner_bottom_right="0dp"
-        app:stroke_color="#66ffffff"
+        app:stroke_color="#66000000"
         app:stroke_width="4dp">
 
         <ImageView

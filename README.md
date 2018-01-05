@@ -123,6 +123,10 @@ compile 'com.gcssloop.widget:rclayout:1.4.4@aar'
 
 ## 更新日志
 
+#### v1.4.6
+
+对 RCLayout 背景剪裁 (背景剪裁暂不支持抗锯齿)。
+
 #### v1.4.5
 
 描边支持半透明。
