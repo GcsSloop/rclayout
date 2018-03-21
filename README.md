@@ -133,7 +133,7 @@ compile 'com.gcssloop.widget:rclayout:1.5.2@aar'
 
 #### v1.5.2
 
-默认不剪裁背景，即 clip-background 默认为 false。
+默认不剪裁背景，即 clip-background 默认为 false。  
 修复剪裁不完全的情况。
 
 #### v1.5.1
@@ -142,12 +142,12 @@ compile 'com.gcssloop.widget:rclayout:1.5.2@aar'
 
 #### v1.5.0
 
-添加 RCImageView (属性和 RCRelativeLayout 相同)。
+添加 RCImageView (属性和 RCRelativeLayout 相同)。  
 抽取 RCHelper。
 
 #### v1.4.7
 
-增加 `clip_background` 属性，控制对 RCLayout 的背景剪裁默，认为 true(剪裁)。
+增加 `clip_background` 属性，控制对 RCLayout 的背景剪裁默认为 true(剪裁)。
 
 #### v1.4.6
 
@@ -179,7 +179,7 @@ compile 'com.gcssloop.widget:rclayout:1.5.2@aar'
 
 #### v1.3.0
 
-支持描边。
+支持描边。  
 添加描边宽度，描边颜色两个属性。
 
 #### v1.2.0
@@ -188,17 +188,17 @@ compile 'com.gcssloop.widget:rclayout:1.5.2@aar'
 
 #### v1.1.0
 
-更新圆角实现方式。
+更新圆角实现方式。  
 添加抗锯齿。
 
 #### v1.0.0
 
-允许对每一个角分别设置半径。
+允许对每一个角分别设置半径。  
 支持padding。
 
 #### v1.0.0-alpha
 
-测试圆角方案是否可行。
+测试圆角方案是否可行。  
 允许统一设置圆角半径。
 
 
