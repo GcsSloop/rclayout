@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2017 GcsSloop
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +20,15 @@
   ~ WebSite: http://www.gcssloop.com
   -->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#5F5652"
+    android:onClick="bgclick"
     android:orientation="vertical"
     android:padding="20dp"
-    android:onClick="bgclick"
     tools:context="com.gcssloop.roundcornerlayouttest.MainActivity">
 
     <com.gcssloop.widget.RCRelativeLayout
@@ -44,11 +42,11 @@
         app:stroke_width="2dp">
 
         <ImageView
-            android:onClick="click"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="click"
             android:scaleType="centerCrop"
-            android:src="@drawable/test"/>
+            android:src="@drawable/test" />
 
     </com.gcssloop.widget.RCRelativeLayout>
 
@@ -63,11 +61,11 @@
         app:stroke_width="2dp">
 
         <ImageView
-            android:onClick="click"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="click"
             android:scaleType="centerCrop"
-            android:src="@drawable/test"/>
+            android:src="@drawable/test" />
 
     </com.gcssloop.widget.RCRelativeLayout>
 
@@ -82,11 +80,11 @@
         app:stroke_width="2dp">
 
         <ImageView
-            android:onClick="click"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="click"
             android:scaleType="centerCrop"
-            android:src="@drawable/test"/>
+            android:src="@drawable/test" />
 
     </com.gcssloop.widget.RCRelativeLayout>
 
@@ -101,32 +99,49 @@
         app:stroke_width="2dp">
 
         <ImageView
-            android:onClick="click"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="click"
             android:scaleType="centerCrop"
-            android:src="@drawable/test"/>
+            android:src="@drawable/test" />
 
     </com.gcssloop.widget.RCRelativeLayout>
+
+    <com.gcssloop.widget.RCImageView
+        android:padding="10dp"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/test"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        app:round_corner="30dp"
+        app:round_corner_bottom_right="0dp"
+        app:round_corner_bottom_left="0dp"
+        app:clip_background="false"
+        android:background="#ccc"
+        app:stroke_color="#E39E83"
+        app:stroke_width="2dp" />
 
     <com.gcssloop.widget.RCRelativeLayout
         android:layout_width="240dp"
         android:layout_height="300dp"
         android:layout_centerInParent="true"
+        android:background="#fff"
+        android:padding="10dp"
+        app:clip_background="true"
         app:round_as_circle="true"
         app:round_corner="30dp"
-        android:padding="10dp"
-        android:background="#fff"
         app:round_corner_bottom_right="0dp"
         app:stroke_color="#66000000"
         app:stroke_width="4dp">
 
         <ImageView
-            android:onClick="click"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="click"
             android:scaleType="centerCrop"
-            android:src="@drawable/test"/>
+            android:src="@drawable/test" />
 
         <TextView
             android:layout_width="match_parent"
@@ -136,7 +151,7 @@
             android:gravity="center_horizontal"
             android:text="害怕.png"
             android:textColor="#fff"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
     </com.gcssloop.widget.RCRelativeLayout>
 

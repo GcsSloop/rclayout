@@ -21,12 +21,15 @@ Android 通用圆角布局，快速实现圆角需求。
 - [x] 支持Padding。
 - [x] 圆角抗锯齿。
 - [x] 内容可点击区域即为显示区域。
+- [x] 是否剪裁自身背景。
 
 ## 主要文件
 
-| 名字               | 摘要     |
-| ---------------- | ------ |
-| RCRealtiveLayout | 圆角相对布局 |
+| 名字             | 摘要           |
+| ---------------- | -------------- |
+| RCRealtiveLayout | 圆角相对布局。 |
+| RCImageView      | 圆角图片。     |
+| RCHelper         | 圆角辅助工具。 |
 
 ### 1. 基本用法
 
@@ -58,7 +61,7 @@ RCRelativeLayout(Round Corner RelativeLayout)，使用圆角布局包裹需要�
 
 ### 2. 配置属性
 
-可以在布局文件中配置的属性如下：
+可以在布局文件中配置的基本属性有五个：
 
 | 属性名称                      | 摘要      | 是否必须设置 | 类型      |
 | ------------------------- | ------- | ------ | ------- |
@@ -70,6 +73,7 @@ RCRelativeLayout(Round Corner RelativeLayout)，使用圆角布局包裹需要�
 | round_as_circle           | 是否剪裁为圆形 | 否      | boolean |
 | stroke_width              | 描边半径    | 否      | dp      |
 | stroke_color              | 描边颜色    | 否      | color   |
+| clip_background           | 剪裁背景    | 否      | boolean |
 
 ### 3. 属性简介
 
@@ -86,7 +90,11 @@ RCRelativeLayout(Round Corner RelativeLayout)，使用圆角布局包裹需要�
 #### 3.2 描边属性
 
 描边宽度`stroke_width`默认情况下数值为 0，即不存在描边效果。  
-描边颜色`stroke_color`默认情况下为白色，允许自定义颜色。
+描边高度`stroke_color`默认情况下为白色，允许自定义颜色。
+
+#### 3.3 背景剪裁
+
+RCLayout 默认对自身背景剪裁，但是可以通过设置 clip_background 为 false 让RCLayout 不剪裁自身的背景。
 
 ### 4.添加方法
 
@@ -99,7 +107,7 @@ allprojects {
     repositories {
         jcenter()
         // 私有仓库地址
-       maven { url "http://lib.gcssloop.com/repository/gcssloop-central/" }
+       maven { url "http://lib.gcssloop.com:8081/repository/gcssloop-central/" }
     }
 }
 ```
@@ -109,7 +117,7 @@ allprojects {
 在需要添加依赖的 Module 下添加以下信息，使用方式和普通的远程仓库一样。
 
 ```groovy
-compile 'com.gcssloop.widget:rclayout:1.4.6@aar'
+compile 'com.gcssloop.widget:rclayout:1.5.2@aar'
 ```
 
 
@@ -122,6 +130,24 @@ compile 'com.gcssloop.widget:rclayout:1.4.6@aar'
 <a href="http://www.gcssloop.com/info/about/" target="_blank"> <img src="http://ww4.sinaimg.cn/large/005Xtdi2gw1f1qn89ihu3j315o0dwwjc.jpg" width="300"/> </a>
 
 ## 更新日志
+
+#### v1.5.2
+
+默认不剪裁背景，即 clip-background 默认为 false。
+修复剪裁不完全的情况。
+
+#### v1.5.1
+
+完善布局属性提示。
+
+#### v1.5.0
+
+添加 RCImageView (属性和 RCRelativeLayout 相同)。
+抽取 RCHelper。
+
+#### v1.4.7
+
+增加 `clip_background` 属性，控制对 RCLayout 的背景剪裁默，认为 true(剪裁)。
 
 #### v1.4.6
 
@@ -154,7 +180,6 @@ compile 'com.gcssloop.widget:rclayout:1.4.6@aar'
 #### v1.3.0
 
 支持描边。
-
 添加描边宽度，描边颜色两个属性。
 
 #### v1.2.0
@@ -164,19 +189,16 @@ compile 'com.gcssloop.widget:rclayout:1.4.6@aar'
 #### v1.1.0
 
 更新圆角实现方式。
-
 添加抗锯齿。
 
 #### v1.0.0
 
 允许对每一个角分别设置半径。
-
 支持padding。
 
 #### v1.0.0-alpha
 
 测试圆角方案是否可行。
-
 允许统一设置圆角半径。
 
 

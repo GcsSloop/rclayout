@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 GcsSloop
+ * Copyright 2018 GcsSloop
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2017-09-11 15:29:05
+ * Last modified 2018-03-20 16:36:45
  *
  * GitHub: https://github.com/GcsSloop
  * WeiBo: http://weibo.com/GcsSloop
@@ -22,31 +22,34 @@
 
 package com.gcssloop.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 
 import com.gcssloop.widget.helper.RCHelper;
 
-
 /**
- * 作用：圆角相对布局
+ * 作用：圆角图片
  * 作者：GcsSloop
  */
-public class RCRelativeLayout extends RelativeLayout {
+@SuppressLint("AppCompatCustomView")
+public class RCImageView extends ImageView {
+
     RCHelper mRCHelper;
 
-    public RCRelativeLayout(Context context) {
+    public RCImageView(Context context) {
         this(context, null);
     }
 
-    public RCRelativeLayout(Context context, AttributeSet attrs) {
+    public RCImageView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RCRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RCImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRCHelper = new RCHelper();
         mRCHelper.initAttrs(context, attrs);
@@ -56,15 +59,6 @@ public class RCRelativeLayout extends RelativeLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mRCHelper.onSizeChanged(this, w, h);
-    }
-
-
-    @Override
-    protected void dispatchDraw(Canvas canvas) {
-        canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
-        super.dispatchDraw(canvas);
-        mRCHelper.onClipDraw(canvas);
-        canvas.restore();
     }
 
     @Override
@@ -77,6 +71,14 @@ public class RCRelativeLayout extends RelativeLayout {
         } else {
             super.draw(canvas);
         }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
+        super.onDraw(canvas);
+        mRCHelper.onClipDraw(canvas);
+        canvas.restore();
     }
 
     @Override
