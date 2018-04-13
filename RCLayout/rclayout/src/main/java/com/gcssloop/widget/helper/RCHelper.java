@@ -89,6 +89,12 @@ public class RCHelper {
 
     public void onSizeChanged(View view, int w, int h) {
         mLayer = new RectF(0, 0, w, h);
+        refreshRegion(view);
+    }
+
+    public void refreshRegion(View view) {
+        int w = (int) mLayer.width();
+        int h = (int) mLayer.height();
         RectF areas = new RectF();
         areas.left = view.getPaddingLeft();
         areas.top = view.getPaddingTop();
