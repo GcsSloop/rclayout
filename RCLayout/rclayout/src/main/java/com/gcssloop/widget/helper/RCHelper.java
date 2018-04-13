@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2018-03-20 17:09:03
+ * Last modified 2018-04-13 23:18:02
  *
  * GitHub: https://github.com/GcsSloop
  * WeiBo: http://weibo.com/GcsSloop
@@ -39,6 +39,10 @@ import android.view.View;
 
 import com.gcssloop.rclayout.R;
 
+/**
+ * 作用：圆角辅助工具
+ * 作者：GcsSloop
+ */
 public class RCHelper {
     public float[] radii = new float[8];   // top-left, top-right, bottom-right, bottom-left
     public Path mClipPath;                 // 剪裁区域路径
@@ -80,6 +84,7 @@ public class RCHelper {
         radii[6] = roundCornerBottomLeft;
         radii[7] = roundCornerBottomLeft;
 
+        mLayer = new RectF();
         mClipPath = new Path();
         mAreaRegion = new Region();
         mPaint = new Paint();
@@ -88,7 +93,7 @@ public class RCHelper {
     }
 
     public void onSizeChanged(View view, int w, int h) {
-        mLayer = new RectF(0, 0, w, h);
+        mLayer.set(0, 0, w, h);
         refreshRegion(view);
     }
 

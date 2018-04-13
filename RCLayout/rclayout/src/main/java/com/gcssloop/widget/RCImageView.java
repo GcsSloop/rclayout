@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2018-03-20 16:36:45
+ * Last modified 2018-04-13 23:16:56
  *
  * GitHub: https://github.com/GcsSloop
  * WeiBo: http://weibo.com/GcsSloop
@@ -25,7 +25,6 @@ package com.gcssloop.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
@@ -45,11 +44,11 @@ public class RCImageView extends ImageView {
         this(context, null);
     }
 
-    public RCImageView(Context context, @Nullable AttributeSet attrs) {
+    public RCImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RCImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RCImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRCHelper = new RCHelper();
         mRCHelper.initAttrs(context, attrs);
@@ -88,4 +87,91 @@ public class RCImageView extends ImageView {
         }
         return super.dispatchTouchEvent(ev);
     }
+
+
+    //--- 公开接口 ----------------------------------------------------------------------------------
+
+    public void setClipBackground(boolean clipBackground) {
+        mRCHelper.mClipBackground = clipBackground;
+        invalidate();
+    }
+
+    public void setRoundAsCircle(boolean roundAsCircle) {
+        mRCHelper.mRoundAsCircle = roundAsCircle;
+        invalidate();
+    }
+
+    public void setRadius(int radius) {
+        for (int i = 0; i < mRCHelper.radii.length; i++) {
+            mRCHelper.radii[i] = radius;
+        }
+        invalidate();
+    }
+
+    public void setTopLeftRadius(int topLeftRadius) {
+        mRCHelper.radii[0] = topLeftRadius;
+        mRCHelper.radii[1] = topLeftRadius;
+        invalidate();
+    }
+
+    public void setTopRightRadius(int topRightRadius) {
+        mRCHelper.radii[2] = topRightRadius;
+        mRCHelper.radii[3] = topRightRadius;
+        invalidate();
+    }
+
+    public void setBottomLeftRadius(int bottomLeftRadius) {
+        mRCHelper.radii[4] = bottomLeftRadius;
+        mRCHelper.radii[5] = bottomLeftRadius;
+        invalidate();
+    }
+
+    public void setBottomRightRadius(int bottomRightRadius) {
+        mRCHelper.radii[6] = bottomRightRadius;
+        mRCHelper.radii[7] = bottomRightRadius;
+        invalidate();
+    }
+
+    public void setStrokeWidth(int strokeWidth) {
+        mRCHelper.mStrokeWidth = strokeWidth;
+        invalidate();
+    }
+
+    public void setStrokeColor(int strokeColor) {
+        mRCHelper.mStrokeColor = strokeColor;
+        invalidate();
+    }
+
+    public boolean isClipBackground() {
+        return mRCHelper.mClipBackground;
+    }
+
+    public boolean isRoundAsCircle() {
+        return mRCHelper.mRoundAsCircle;
+    }
+
+    public float getTopLeftRadius() {
+        return mRCHelper.radii[0];
+    }
+
+    public float getTopRightRadius() {
+        return mRCHelper.radii[2];
+    }
+
+    public float getBottomLeftRadius() {
+        return mRCHelper.radii[4];
+    }
+
+    public float getBottomRightRadius() {
+        return mRCHelper.radii[6];
+    }
+
+    public int getStrokeWidth() {
+        return mRCHelper.mStrokeWidth;
+    }
+
+    public int getStrokeColor() {
+        return mRCHelper.mStrokeColor;
+    }
+
 }
