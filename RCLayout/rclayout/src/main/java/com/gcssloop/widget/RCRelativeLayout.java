@@ -63,6 +63,7 @@ public class RCRelativeLayout extends RelativeLayout {
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
+        mRCHelper.refreshRegion(this);
         mRCHelper.onClipDraw(canvas);
         canvas.restore();
     }
@@ -86,4 +87,44 @@ public class RCRelativeLayout extends RelativeLayout {
         }
         return super.dispatchTouchEvent(ev);
     }
+
+    public void setClipBackground(boolean clipBackground) {
+        mRCHelper.mClipBackground = clipBackground;
+        invalidate();
+    }
+
+    public void setRoundAsCircle(boolean roundAsCircle) {
+        mRCHelper.mRoundAsCircle = roundAsCircle;
+        invalidate();
+    }
+
+    public void setTopLeftRadius(int topLeftRadius) {
+        mRCHelper.radii[0] = topLeftRadius;
+        mRCHelper.radii[1] = topLeftRadius;
+        invalidate();
+    }
+
+    public void setTopRightRadius(int topRightRadius) {
+        mRCHelper.radii[2] = topRightRadius;
+        mRCHelper.radii[3] = topRightRadius;
+        invalidate();
+    }
+
+    public void setBottomLeftRadius(int bottomLeftRadius) {
+        mRCHelper.radii[4] = bottomLeftRadius;
+        mRCHelper.radii[5] = bottomLeftRadius;
+        invalidate();
+    }
+
+    public void setBottomRightRadius(int bottomRightRadius) {
+        mRCHelper.radii[6] = bottomRightRadius;
+        mRCHelper.radii[7] = bottomRightRadius;
+        invalidate();
+    }
+
+    public void setStrokeWidth(int strokeWidth) {
+        mRCHelper.mStrokeWidth = strokeWidth;
+        invalidate();
+    }
+
 }
