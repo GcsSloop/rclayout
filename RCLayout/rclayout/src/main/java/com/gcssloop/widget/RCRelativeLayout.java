@@ -98,6 +98,13 @@ public class RCRelativeLayout extends RelativeLayout {
         invalidate();
     }
 
+    public void setRadius(int radius) {
+        for (int i = 0; i < mRCHelper.radii.length; i++) {
+            mRCHelper.radii[i] = radius;
+        }
+        invalidate();
+    }
+
     public void setTopLeftRadius(int topLeftRadius) {
         mRCHelper.radii[0] = topLeftRadius;
         mRCHelper.radii[1] = topLeftRadius;
@@ -131,5 +138,38 @@ public class RCRelativeLayout extends RelativeLayout {
         mRCHelper.mStrokeColor = strokeColor;
         invalidate();
     }
+    
+    public boolean isClipBackground() {
+        return mRCHelper.mClipBackground;
+    }
+
+    public boolean isRoundAsCircle() {
+        return mRCHelper.mRoundAsCircle;
+    }
+
+    public float getTopLeftRadius() {
+        return mRCHelper.radii[0];
+    }
+
+    public float getTopRightRadius() {
+        return mRCHelper.radii[2];
+    }
+
+    public float getBottomLeftRadius() {
+        return mRCHelper.radii[4];
+    }
+
+    public float getBottomRightRadius() {
+        return mRCHelper.radii[6];
+    }
+
+    public int getStrokeWidth() {
+        return mRCHelper.mStrokeWidth;
+    }
+
+    public int getStrokeColor() {
+        return mRCHelper.mStrokeColor;
+    }
+
 
 }
