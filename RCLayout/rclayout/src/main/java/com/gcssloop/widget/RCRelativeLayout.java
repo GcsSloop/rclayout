@@ -127,4 +127,9 @@ public class RCRelativeLayout extends RelativeLayout {
         invalidate();
     }
 
+    public void setStrokeColor(int strokeColor) {
+        mRCHelper.mStrokeColor = strokeColor;
+        invalidate();
+    }
+
 }
