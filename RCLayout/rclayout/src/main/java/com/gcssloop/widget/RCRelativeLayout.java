@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 GcsSloop
+ * Copyright 2018 GcsSloop
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2017-09-11 15:29:05
+ * Last modified 2018-04-13 23:18:56
  *
  * GitHub: https://github.com/GcsSloop
  * WeiBo: http://weibo.com/GcsSloop
@@ -58,7 +58,6 @@ public class RCRelativeLayout extends RelativeLayout {
         mRCHelper.onSizeChanged(this, w, h);
     }
 
-
     @Override
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
@@ -87,6 +86,8 @@ public class RCRelativeLayout extends RelativeLayout {
         }
         return super.dispatchTouchEvent(ev);
     }
+
+    //--- 公开接口 ----------------------------------------------------------------------------------
 
     public void setClipBackground(boolean clipBackground) {
         mRCHelper.mClipBackground = clipBackground;
@@ -170,6 +171,5 @@ public class RCRelativeLayout extends RelativeLayout {
     public int getStrokeColor() {
         return mRCHelper.mStrokeColor;
     }
-
 
 }

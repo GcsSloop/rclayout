@@ -8,7 +8,7 @@ Android 通用圆角布局，快速实现圆角需求。
 
 ## 效果预览
 
-<img src="https://ww4.sinaimg.cn/large/006tKfTcly1fk7twywj5oj30u01fewka.jpg" width="300"/>
+<img src="http://ww1.sinaimg.cn/large/005Xtdi2gy1fqbgk8pmevg309u0ghwz9.gif" width="300"/> <img src="https://ww4.sinaimg.cn/large/006tKfTcly1fk7twywj5oj30u01fewka.jpg" width="294"/>
 
 ## 支持的特性
 
@@ -117,7 +117,7 @@ allprojects {
 在需要添加依赖的 Module 下添加以下信息，使用方式和普通的远程仓库一样。
 
 ```groovy
-implementation 'com.gcssloop.widget:rclayout:1.5.2'
+implementation 'com.gcssloop.widget:rclayout:1.5.4'
 ```
 
 
@@ -130,6 +130,15 @@ implementation 'com.gcssloop.widget:rclayout:1.5.2'
 <a href="http://www.gcssloop.com/info/about/" target="_blank"> <img src="http://ww4.sinaimg.cn/large/005Xtdi2gw1f1qn89ihu3j315o0dwwjc.jpg" width="300"/> </a>
 
 ## 更新日志
+
+#### v1.5.4
+
+提供在 Java 中动态设置属性的方法。
+
+#### v1.5.3
+
+降低兼容最低版本。  
+精简项目结构。
 
 #### v1.5.2
 
