@@ -62,13 +62,13 @@ public class RCRelativeLayout extends RelativeLayout {
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        mRCHelper.refreshRegion(this);
         mRCHelper.onClipDraw(canvas);
         canvas.restore();
     }
 
     @Override
     public void draw(Canvas canvas) {
+        mRCHelper.refreshRegion(this);
         if (mRCHelper.mClipBackground) {
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
