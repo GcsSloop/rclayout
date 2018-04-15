@@ -24,6 +24,7 @@ package com.gcssloop.widget.helper;
 
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -49,6 +50,7 @@ public class RCHelper {
     public Paint mPaint;                   // 画笔
     public boolean mRoundAsCircle = false; // 圆形
     public int mStrokeColor;               // 描边颜色
+    public ColorStateList mStrokeColorStateList;// 描边颜色的状态
     public int mStrokeWidth;               // 描边半径
     public boolean mClipBackground;        // 是否剪裁背景
     public Region mAreaRegion;             // 内容区域
@@ -58,7 +60,8 @@ public class RCHelper {
     public void initAttrs(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RCAttrs);
         mRoundAsCircle = ta.getBoolean(R.styleable.RCAttrs_round_as_circle, false);
-        mStrokeColor = ta.getColor(R.styleable.RCAttrs_stroke_color, Color.WHITE);
+        mStrokeColor = Color.WHITE;
+        mStrokeColorStateList = ta.getColorStateList(R.styleable.RCAttrs_stroke_color);
         mStrokeWidth = ta.getDimensionPixelSize(R.styleable.RCAttrs_stroke_width, 0);
         mClipBackground = ta.getBoolean(R.styleable.RCAttrs_clip_background, false);
         int roundCorner = ta.getDimensionPixelSize(R.styleable.RCAttrs_round_corner, 0);

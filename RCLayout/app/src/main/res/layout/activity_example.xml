@@ -11,7 +11,8 @@
         android:layout_width="@dimen/size_example_image"
         android:layout_height="@dimen/size_example_image"
         android:layout_centerHorizontal="true"
-        app:stroke_color="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        app:stroke_color="@drawable/selector_stroke_color">
 
         <ImageView
             android:layout_width="match_parent"
@@ -29,33 +30,40 @@
         android:orientation="vertical"
         android:paddingLeft="15dp">
 
-        <CheckBox
-            android:id="@+id/cb_circle"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_gravity="right"
             android:layout_marginBottom="10dp"
-            android:layout_marginRight="15dp"
-            android:text="圆形"
-            android:textColor="@android:color/white" />
+            android:layout_marginRight="15dp">
+
+            <CheckBox
+                android:id="@+id/cb_clip_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剪裁背景"
+                android:textColor="@android:color/white" />
+
+            <CheckBox
+                android:id="@+id/cb_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="圆形"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cb_circle">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="StrokeWidth："
-                android:textColor="@android:color/white" />
+                style="@style/tv_label_example"
+                android:text="StrokeWidth：" />
 
             <SeekBar
                 android:id="@+id/seekbar_stroke_width"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                style="@style/seekbar_example" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -64,16 +72,12 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RadiusTopLeft："
-                android:textColor="@android:color/white" />
+                style="@style/tv_label_example"
+                android:text="TopLeftRadius：" />
 
             <SeekBar
                 android:id="@+id/seekbar_radius_top_left"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                style="@style/seekbar_example" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -82,16 +86,12 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RadiusTopRight："
-                android:textColor="@android:color/white" />
+                style="@style/tv_label_example"
+                android:text="TopRightRadius：" />
 
             <SeekBar
                 android:id="@+id/seekbar_radius_top_right"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                style="@style/seekbar_example" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -100,34 +100,27 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RadiusTopLeft："
-                android:textColor="@android:color/white" />
+                style="@style/tv_label_example"
+                android:text="TopLeftRadius：" />
 
             <SeekBar
                 android:id="@+id/seekbar_radius_bottom_left"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                style="@style/seekbar_example" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RadiusBottomRight："
-                android:textColor="@android:color/white" />
+                style="@style/tv_label_example"
+                android:text="BottomRightRadius：" />
 
             <SeekBar
                 android:id="@+id/seekbar_radius_bottom_right"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                style="@style/seekbar_example" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

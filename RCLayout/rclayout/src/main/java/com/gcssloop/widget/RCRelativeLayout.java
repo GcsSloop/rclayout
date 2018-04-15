@@ -26,6 +26,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
 import com.gcssloop.widget.helper.RCHelper;
@@ -35,7 +36,11 @@ import com.gcssloop.widget.helper.RCHelper;
  * 作用：圆角相对布局
  * 作者：GcsSloop
  */
-public class RCRelativeLayout extends RelativeLayout {
+public class RCRelativeLayout extends RelativeLayout implements Checkable {
+    private final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
+    private boolean mChecked;
+    private OnCheckedChangeListener mOnCheckedChangeListener;
+
     RCHelper mRCHelper;
 
     public RCRelativeLayout(Context context) {
@@ -62,13 +67,13 @@ public class RCRelativeLayout extends RelativeLayout {
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        mRCHelper.refreshRegion(this);
         mRCHelper.onClipDraw(canvas);
         canvas.restore();
     }
 
     @Override
     public void draw(Canvas canvas) {
+        mRCHelper.refreshRegion(this);
         if (mRCHelper.mClipBackground) {
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
@@ -172,4 +177,54 @@ public class RCRelativeLayout extends RelativeLayout {
         return mRCHelper.mStrokeColor;
     }
 
+
+    @Override
+    public int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        if (mRCHelper.mStrokeColorStateList != null && mRCHelper.mStrokeColorStateList.isStateful()) {
+            int stateColor = mRCHelper.mStrokeColorStateList.getColorForState(getDrawableState(), mRCHelper.mStrokeColor);
+
+            setStrokeColor(stateColor);
+        }
+    }
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+            if (mOnCheckedChangeListener != null) {
+                mOnCheckedChangeListener.onCheckedChanged(this, mChecked);
+            }
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        this.mOnCheckedChangeListener = listener;
+    }
+
+
+    public interface OnCheckedChangeListener {
+
+        void onCheckedChanged(RCRelativeLayout layout, boolean isChecked);
+    }
 }
