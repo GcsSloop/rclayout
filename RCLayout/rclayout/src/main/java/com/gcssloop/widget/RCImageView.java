@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Last modified 2018-04-13 23:16:56
+ * Last modified 2018-04-15 22:59:54
  *
  * GitHub: https://github.com/GcsSloop
  * WeiBo: http://weibo.com/GcsSloop
@@ -27,8 +27,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.widget.Checkable;
 import android.widget.ImageView;
 
+import com.gcssloop.widget.helper.RCAttrs;
 import com.gcssloop.widget.helper.RCHelper;
 
 /**
@@ -36,7 +38,7 @@ import com.gcssloop.widget.helper.RCHelper;
  * 作者：GcsSloop
  */
 @SuppressLint("AppCompatCustomView")
-public class RCImageView extends ImageView {
+public class RCImageView extends ImageView implements Checkable, RCAttrs {
 
     RCHelper mRCHelper;
 
@@ -62,6 +64,7 @@ public class RCImageView extends ImageView {
 
     @Override
     public void draw(Canvas canvas) {
+        mRCHelper.refreshRegion(this);
         if (mRCHelper.mClipBackground) {
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
@@ -82,7 +85,16 @@ public class RCImageView extends ImageView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        int action = ev.getAction();
+        if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_UP) {
+            refreshDrawableState();
+        } else if (action == MotionEvent.ACTION_CANCEL) {
+            setPressed(false);
+            refreshDrawableState();
+        }
         if (!mRCHelper.mAreaRegion.contains((int) ev.getX(), (int) ev.getY())) {
+            setPressed(false);
+            refreshDrawableState();
             return false;
         }
         return super.dispatchTouchEvent(ev);
@@ -174,4 +186,37 @@ public class RCImageView extends ImageView {
         return mRCHelper.mStrokeColor;
     }
 
+
+    //--- Selector 支持 ----------------------------------------------------------------------------
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        mRCHelper.drawableStateChanged(this);
+    }
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mRCHelper.mChecked != checked) {
+            mRCHelper.mChecked = checked;
+            refreshDrawableState();
+            if (mRCHelper.mOnCheckedChangeListener != null) {
+                mRCHelper.mOnCheckedChangeListener.onCheckedChanged(this, mRCHelper.mChecked);
+            }
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mRCHelper.mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mRCHelper.mChecked);
+    }
+
+    public void setOnCheckedChangeListener(RCHelper.OnCheckedChangeListener listener) {
+        mRCHelper.mOnCheckedChangeListener = listener;
+    }
 }

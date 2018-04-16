@@ -35,10 +35,18 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.widget.Checkable;
 
 import com.gcssloop.rclayout.R;
+import com.gcssloop.widget.RCRelativeLayout;
+
+import java.util.ArrayList;
 
 /**
  * 作用：圆角辅助工具
@@ -49,6 +57,7 @@ public class RCHelper {
     public Path mClipPath;                 // 剪裁区域路径
     public Paint mPaint;                   // 画笔
     public boolean mRoundAsCircle = false; // 圆形
+    public int mDefaultStrokeColor;        // 默认描边颜色
     public int mStrokeColor;               // 描边颜色
     public ColorStateList mStrokeColorStateList;// 描边颜色的状态
     public int mStrokeWidth;               // 描边半径
@@ -60,8 +69,14 @@ public class RCHelper {
     public void initAttrs(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RCAttrs);
         mRoundAsCircle = ta.getBoolean(R.styleable.RCAttrs_round_as_circle, false);
-        mStrokeColor = Color.WHITE;
         mStrokeColorStateList = ta.getColorStateList(R.styleable.RCAttrs_stroke_color);
+        if (null != mStrokeColorStateList) {
+            mStrokeColor = mStrokeColorStateList.getDefaultColor();
+            mDefaultStrokeColor = mStrokeColorStateList.getDefaultColor();
+        } else {
+            mStrokeColor = Color.WHITE;
+            mDefaultStrokeColor = Color.WHITE;
+        }
         mStrokeWidth = ta.getDimensionPixelSize(R.styleable.RCAttrs_stroke_width, 0);
         mClipBackground = ta.getBoolean(R.styleable.RCAttrs_clip_background, false);
         int roundCorner = ta.getDimensionPixelSize(R.styleable.RCAttrs_round_corner, 0);
@@ -142,5 +157,42 @@ public class RCHelper {
         mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawPath(mClipPath, mPaint);
+    }
+
+
+    //--- Selector 支持 ----------------------------------------------------------------------------
+
+    public boolean mChecked;              // 是否是 check 状态
+    public OnCheckedChangeListener mOnCheckedChangeListener;
+
+    public void drawableStateChanged(View view) {
+        if (view instanceof RCAttrs) {
+            ArrayList<Integer> stateListArray = new ArrayList<>();
+            if (view instanceof Checkable) {
+                stateListArray.add(android.R.attr.state_checkable);
+                if (((Checkable) view).isChecked())
+                    stateListArray.add(android.R.attr.state_checked);
+            }
+            if (view.isEnabled()) stateListArray.add(android.R.attr.state_enabled);
+            if (view.isFocused()) stateListArray.add(android.R.attr.state_focused);
+            if (view.isPressed()) stateListArray.add(android.R.attr.state_pressed);
+            if (view.isHovered()) stateListArray.add(android.R.attr.state_hovered);
+            if (view.isSelected()) stateListArray.add(android.R.attr.state_selected);
+            if (view.isActivated()) stateListArray.add(android.R.attr.state_activated);
+            if (view.hasWindowFocus()) stateListArray.add(android.R.attr.state_window_focused);
+
+            if (mStrokeColorStateList != null && mStrokeColorStateList.isStateful()) {
+                int[] stateList = new int[stateListArray.size()];
+                for (int i = 0; i < stateListArray.size(); i++) {
+                    stateList[i] = stateListArray.get(i);
+                }
+                int stateColor = mStrokeColorStateList.getColorForState(stateList, mDefaultStrokeColor);
+                ((RCAttrs) view).setStrokeColor(stateColor);
+            }
+        }
+    }
+
+    public interface OnCheckedChangeListener {
+        void onCheckedChanged(View view, boolean isChecked);
     }
 }
