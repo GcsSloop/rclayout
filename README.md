@@ -1,5 +1,7 @@
 # RCLayout(圆角布局)
 
+![GitHub followers](https://img.shields.io/github/followers/gcssloop.svg?style=social&label=Follow)
+
 Android 通用圆角布局，快速实现圆角需求。
 
 之前做项目的时候有圆角相关需求，在网上找了很多方案都不够满意，于是自己做了一个，目前已经使用了一段时间，更新了多个版本，我遇到的问题都进行了修复，并且添加了很多方便的可配置属性，以满足不同需求。
