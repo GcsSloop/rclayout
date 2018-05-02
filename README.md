@@ -131,6 +131,10 @@ implementation 'com.gcssloop.widget:rclayout:1.6.0'
 
 <a href="http://www.gcssloop.com/info/about/" target="_blank"> <img src="http://ww4.sinaimg.cn/large/005Xtdi2gw1f1qn89ihu3j315o0dwwjc.jpg" width="300"/> </a>
 
+## 感谢
+
+感谢 [![](https://avatars1.githubusercontent.com/u/17588779?s=50&v=4)](https://github.com/dengyuhan) 贡献的代码。
+
 ## 更新日志
 
 #### v1.6.0
