@@ -119,7 +119,7 @@ allprojects {
 在需要添加依赖的 Module 下添加以下信息，使用方式和普通的远程仓库一样。
 
 ```groovy
-implementation 'com.gcssloop.widget:rclayout:1.6.1'
+implementation 'com.gcssloop.widget:rclayout:1.7.0'
 ```
 
 
@@ -136,6 +136,10 @@ implementation 'com.gcssloop.widget:rclayout:1.6.1'
 感谢 [![img](https://avatars1.githubusercontent.com/u/17588779?s=50&v=4)](https://github.com/dengyuhan) 贡献的代码。
 
 ## 更新日志
+
+#### v1.7.0
+
+修复代码中圆角设置错误问题。
 
 #### v1.6.1
 
