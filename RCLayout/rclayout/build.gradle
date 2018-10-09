@@ -38,7 +38,7 @@ android {
 ext {
     GROUP_ID = "com.gcssloop.widget"
     ARTIFACT_ID = "rclayout"
-    VERSION = "1.6.0"
+    VERSION = "1.6.1"
 }
 
 apply from: "/Applications/nexus/pack/pack-upload.gradle"

@@ -35,16 +35,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Region;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.Checkable;
 
 import com.gcssloop.rclayout.R;
-import com.gcssloop.widget.RCRelativeLayout;
 
 import java.util.ArrayList;
 
@@ -63,7 +58,6 @@ public class RCHelper {
     public int mStrokeWidth;               // 描边半径
     public boolean mClipBackground;        // 是否剪裁背景
     public Region mAreaRegion;             // 内容区域
-    public int mEdgeFix = 10;              // 边缘修复
     public RectF mLayer;                   // 画布图层大小
 
     public void initAttrs(Context context, AttributeSet attrs) {
@@ -132,8 +126,8 @@ public class RCHelper {
         } else {
             mClipPath.addRoundRect(areas, radii, Path.Direction.CW);
         }
-        mClipPath.moveTo(-mEdgeFix, -mEdgeFix);  // 通过空操作让Path区域占满画布
-        mClipPath.moveTo(w + mEdgeFix, h + mEdgeFix);
+        mClipPath.moveTo(0, 0);  // 通过空操作让Path区域占满画布
+        mClipPath.moveTo(w , h);
         Region clip = new Region((int) areas.left, (int) areas.top,
                 (int) areas.right, (int) areas.bottom);
         mAreaRegion.setPath(mClipPath, clip);
