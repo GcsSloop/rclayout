@@ -22,6 +22,7 @@
 
 package com.gcssloop.roundcornerlayouttest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,11 +38,13 @@ public class ExampleActivity extends AppCompatActivity {
     RCRelativeLayout layout;
     CheckBox cb_clip_background;
     CheckBox cb_circle;
+    CheckBox cb_background;
     SeekBar seekbar_stroke_width;
     SeekBar seekbar_radius_top_left;
     SeekBar seekbar_radius_top_right;
     SeekBar seekbar_radius_bottom_left;
     SeekBar seekbar_radius_bottom_right;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class ExampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example);
         layout = (RCRelativeLayout) findViewById(R.id.rc_layout);
         cb_circle = (CheckBox) findViewById(R.id.cb_circle);
+        cb_background = (CheckBox) findViewById(R.id.cb_background);
         cb_clip_background = (CheckBox) findViewById(R.id.cb_clip_background);
         seekbar_stroke_width = (SeekBar) findViewById(R.id.seekbar_stroke_width);
         seekbar_radius_top_left = (SeekBar) findViewById(R.id.seekbar_radius_top_left);
@@ -57,7 +61,8 @@ public class ExampleActivity extends AppCompatActivity {
         seekbar_radius_bottom_right = (SeekBar) findViewById(R.id.seekbar_radius_bottom_right);
 
         //checked状态
-        final Toast toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+
         layout.setOnCheckedChangeListener(new RCHelper.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(View v, boolean isChecked) {
@@ -69,6 +74,18 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 layout.toggle();
+            }
+        });
+        //背景色
+        cb_background.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    layout.setBackgroundResource(R.color.colorBackground);
+                } else {
+                    layout.setBackground(null);
+                }
+                cb_clip_background.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             }
         });
         //剪裁背景
@@ -83,6 +100,8 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 layout.setRoundAsCircle(isChecked);
+
+                findViewById(R.id.layout_radius).setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
             }
         });
         //边框粗细
@@ -121,13 +140,17 @@ public class ExampleActivity extends AppCompatActivity {
             }
         });
         seekbar_stroke_width.setProgress(getResources().getDimensionPixelSize(R.dimen.default_stroke_width));
-        cb_clip_background.setChecked(true);
 
+        cb_circle.setChecked(true);
     }
 
     private int getProgressRadius(int progress) {
         int size = getResources().getDimensionPixelOffset(R.dimen.size_example_image);
         return (int) ((float) progress / 100 * size) / 2;
+    }
+
+    public void clickAntiAlias(View view) {
+        startActivity(new Intent(this,AntiAliasActivity.class));
     }
 
 

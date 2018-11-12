@@ -27,14 +27,11 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
 import com.gcssloop.widget.helper.RCAttrs;
 import com.gcssloop.widget.helper.RCHelper;
-
-import java.util.ArrayList;
 
 
 /**
@@ -68,14 +65,15 @@ public class RCRelativeLayout extends RelativeLayout implements Checkable, RCAtt
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
+        mRCHelper.refreshRegion(this);
         mRCHelper.onClipDraw(canvas);
         canvas.restore();
     }
 
     @Override
     public void draw(Canvas canvas) {
-        mRCHelper.refreshRegion(this);
         if (mRCHelper.mClipBackground) {
+            mRCHelper.refreshRegion(this);
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
             super.draw(canvas);
