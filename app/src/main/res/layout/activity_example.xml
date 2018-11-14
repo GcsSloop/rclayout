@@ -3,124 +3,154 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5F5652"
-    android:gravity="center">
+    android:background="@color/colorActivityBackground">
 
-    <com.gcssloop.widget.RCRelativeLayout
-        android:id="@+id/rc_layout"
-        android:layout_width="@dimen/size_example_image"
-        android:layout_height="@dimen/size_example_image"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimary"
-        app:stroke_color="@drawable/selector_stroke_color">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/test" />
-
-    </com.gcssloop.widget.RCRelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/tv_antialias"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rc_layout"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical"
-        android:paddingLeft="15dp">
+        android:onClick="clickAntiAlias"
+        android:text="裁剪背景后有锯齿?"
+        android:textColor="@android:color/white" />
+
+    <RelativeLayout
+        android:layout_below="@id/tv_antialias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <com.gcssloop.widget.RCRelativeLayout
+            android:id="@+id/rc_layout"
+            android:layout_width="@dimen/size_example_image"
+            android:layout_height="@dimen/size_example_image"
+            android:layout_centerHorizontal="true"
+            app:stroke_color="@drawable/selector_stroke_color">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test" />
+
+        </com.gcssloop.widget.RCRelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="15dp">
+            android:layout_below="@id/rc_layout"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
 
-            <CheckBox
-                android:id="@+id/cb_clip_background"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="剪裁背景"
-                android:textColor="@android:color/white" />
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp">
 
-            <CheckBox
-                android:id="@+id/cb_circle"
-                android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/cb_clip_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剪裁背景"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/cb_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="背景色"
+                    android:textColor="@android:color/white" />
+
+                <CheckBox
+                    android:id="@+id/cb_circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="圆形"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/tv_label_example"
+                    android:text="StrokeWidth：" />
+
+                <SeekBar
+                    android:id="@+id/seekbar_stroke_width"
+                    style="@style/seekbar_example" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_radius"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="圆形"
-                android:textColor="@android:color/white" />
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/tv_label_example"
+                        android:text="TopLeftRadius：" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar_radius_top_left"
+                        style="@style/seekbar_example" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/tv_label_example"
+                        android:text="TopRightRadius：" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar_radius_top_right"
+                        style="@style/seekbar_example" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/tv_label_example"
+                        android:text="BottomLeftRadius：" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar_radius_bottom_left"
+                        style="@style/seekbar_example" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/tv_label_example"
+                        android:text="BottomRightRadius：" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar_radius_bottom_right"
+                        style="@style/seekbar_example" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/tv_label_example"
-                android:text="StrokeWidth：" />
-
-            <SeekBar
-                android:id="@+id/seekbar_stroke_width"
-                style="@style/seekbar_example" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                style="@style/tv_label_example"
-                android:text="TopLeftRadius：" />
-
-            <SeekBar
-                android:id="@+id/seekbar_radius_top_left"
-                style="@style/seekbar_example" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                style="@style/tv_label_example"
-                android:text="TopRightRadius：" />
-
-            <SeekBar
-                android:id="@+id/seekbar_radius_top_right"
-                style="@style/seekbar_example" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                style="@style/tv_label_example"
-                android:text="BottomLeftRadius：" />
-
-            <SeekBar
-                android:id="@+id/seekbar_radius_bottom_left"
-                style="@style/seekbar_example" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/tv_label_example"
-                android:text="BottomRightRadius：" />
-
-            <SeekBar
-                android:id="@+id/seekbar_radius_bottom_right"
-                style="@style/seekbar_example" />
-        </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

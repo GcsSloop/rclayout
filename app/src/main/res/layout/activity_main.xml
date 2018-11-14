@@ -25,7 +25,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5F5652"
+    android:background="@color/colorActivityBackground"
     android:onClick="bgclick"
     android:orientation="vertical"
     android:padding="20dp"

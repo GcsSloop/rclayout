@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="small_size_example_image">250dp</dimen>
     <dimen name="size_example_image">300dp</dimen>
     <dimen name="default_stroke_width">5dp</dimen>
 </resources>

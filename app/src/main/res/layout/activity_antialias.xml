@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorActivityBackground"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/layout_sawtooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_sawtooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="有锯齿"
+            android:textColor="@android:color/white" />
+
+        <com.gcssloop.widget.RCRelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_sawtooth"
+            android:layout_width="@dimen/small_size_example_image"
+            android:layout_height="@dimen/small_size_example_image"
+            android:background="@color/colorBackground"
+            app:clip_background="true"
+            app:round_as_circle="true"
+            app:stroke_color="@color/colorPrimary"
+            app:stroke_width="@dimen/default_stroke_width">
+
+        </com.gcssloop.widget.RCRelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/layout_sawtooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_no_sawtooth"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="无锯齿"
+            android:textColor="@android:color/white" />
+
+        <com.gcssloop.widget.RCRelativeLayout
+            android:layout_below="@id/tv_no_sawtooth"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/small_size_example_image"
+            android:layout_height="@dimen/small_size_example_image"
+            app:round_as_circle="true"
+            app:stroke_color="@color/colorPrimary"
+            app:stroke_width="@dimen/default_stroke_width">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground" />
+        </com.gcssloop.widget.RCRelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
