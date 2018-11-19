@@ -25,7 +25,6 @@ package com.gcssloop.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
