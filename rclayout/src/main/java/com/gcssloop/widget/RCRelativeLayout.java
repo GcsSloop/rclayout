@@ -64,7 +64,6 @@ public class RCRelativeLayout extends RelativeLayout implements Checkable, RCAtt
     protected void dispatchDraw(Canvas canvas) {
         canvas.saveLayer(mRCHelper.mLayer, null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        mRCHelper.refreshRegion(this);
         mRCHelper.onClipDraw(canvas);
         canvas.restore();
     }
@@ -72,7 +71,6 @@ public class RCRelativeLayout extends RelativeLayout implements Checkable, RCAtt
     @Override
     public void draw(Canvas canvas) {
         if (mRCHelper.mClipBackground) {
-            mRCHelper.refreshRegion(this);
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
             super.draw(canvas);
@@ -150,6 +148,12 @@ public class RCRelativeLayout extends RelativeLayout implements Checkable, RCAtt
     public void setStrokeColor(int strokeColor) {
         mRCHelper.mStrokeColor = strokeColor;
         invalidate();
+    }
+
+    @Override
+    public void invalidate() {
+        mRCHelper.refreshRegion(this);
+        super.invalidate();
     }
 
     public boolean isClipBackground() {

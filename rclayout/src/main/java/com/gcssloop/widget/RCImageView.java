@@ -64,7 +64,6 @@ public class RCImageView extends ImageView implements Checkable, RCAttrs {
 
     @Override
     public void draw(Canvas canvas) {
-        mRCHelper.refreshRegion(this);
         if (mRCHelper.mClipBackground) {
             canvas.save();
             canvas.clipPath(mRCHelper.mClipPath);
@@ -152,6 +151,12 @@ public class RCImageView extends ImageView implements Checkable, RCAttrs {
     public void setStrokeColor(int strokeColor) {
         mRCHelper.mStrokeColor = strokeColor;
         invalidate();
+    }
+
+    @Override
+    public void invalidate() {
+        mRCHelper.refreshRegion(this);
+        super.invalidate();
     }
 
     public boolean isClipBackground() {
