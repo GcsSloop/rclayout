@@ -133,7 +133,7 @@ allprojects {
 在需要添加依赖的 Module 下添加以下信息，使用方式和普通的远程仓库一样。
 
 ```groovy
-implementation 'com.gcssloop.widget:rclayout:1.8.0'
+implementation 'com.gcssloop.widget:rclayout:1.8.1'
 ```
 
 ## 作者简介
@@ -149,6 +149,10 @@ implementation 'com.gcssloop.widget:rclayout:1.8.0'
 感谢 [![img](https://avatars1.githubusercontent.com/u/17588779?s=50&v=4)](https://github.com/dengyuhan) 贡献的代码。
 
 ## 更新日志
+
+#### v1.8.1
+
+1. 完善点击事件分发逻辑。
 
 #### v1.8.0
 
