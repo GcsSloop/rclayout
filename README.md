@@ -110,7 +110,7 @@ RCLayout 默认对自身背景剪裁，但是可以通过设置 clip_background 
 >
 > <img src="Img/path_in_9.0.jpg" width=600 />
 >
-> **这种优化就间接的导致了部分 Xfermode 效果与之前不同。**
+> **这种优化就间接的导致了使用 Path 时部分 Xfermode 效果与之前不同。**
 
 ### 4.添加方法
 
