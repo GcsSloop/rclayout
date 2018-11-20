@@ -35,6 +35,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Checkable;
@@ -122,12 +123,19 @@ public class RCHelper {
             float d = areas.width() >= areas.height() ? areas.height() : areas.width();
             float r = d / 2;
             PointF center = new PointF(w / 2, h / 2);
-            mClipPath.addCircle(center.x, center.y, r, Path.Direction.CW);
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+                mClipPath.addCircle(center.x, center.y, r, Path.Direction.CW);
+
+                mClipPath.moveTo(0, 0);  // 通过空操作让Path区域占满画布
+                mClipPath.moveTo(w, h);
+            } else {
+                float y = h / 2 - r;
+                mClipPath.moveTo(areas.left, y);
+                mClipPath.addCircle(center.x, y + r, r, Path.Direction.CW);
+            }
         } else {
             mClipPath.addRoundRect(areas, radii, Path.Direction.CW);
         }
-        mClipPath.moveTo(0, 0);  // 通过空操作让Path区域占满画布
-        mClipPath.moveTo(w , h);
         Region clip = new Region((int) areas.left, (int) areas.top,
                 (int) areas.right, (int) areas.bottom);
         mAreaRegion.setPath(mClipPath, clip);
@@ -147,10 +155,20 @@ public class RCHelper {
             mPaint.setStyle(Paint.Style.STROKE);
             canvas.drawPath(mClipPath, mPaint);
         }
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawPath(mClipPath, mPaint);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+            mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+            canvas.drawPath(mClipPath, mPaint);
+        } else {
+            mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+
+            final Path path = new Path();
+            path.addRect(0, 0, (int) mLayer.width(), (int) mLayer.height(), Path.Direction.CW);
+            path.op(mClipPath, Path.Op.DIFFERENCE);
+            canvas.drawPath(path, mPaint);
+        }
     }
 
 

@@ -150,7 +150,11 @@ public class ExampleActivity extends AppCompatActivity {
     }
 
     public void clickAntiAlias(View view) {
-        startActivity(new Intent(this,AntiAliasActivity.class));
+        startActivity(new Intent(this, AntiAliasActivity.class));
+    }
+
+    public void clickExample(View view) {
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 

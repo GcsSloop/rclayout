@@ -6,6 +6,14 @@
     android:background="@color/colorActivityBackground">
 
     <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clickExample"
+        android:text="其它示例"
+        android:textColor="@android:color/white" />
+
+    <TextView
         android:layout_alignParentRight="true"
         android:id="@+id/tv_antialias"
         android:layout_margin="10dp"

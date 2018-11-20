@@ -9,7 +9,7 @@ Android 通用圆角布局，快速实现圆角需求。
 ## 效果预览
 
 <p>
-<img src="http://ww1.sinaimg.cn/large/005Xtdi2gy1fqbgk8pmevg309u0ghwz9.gif" width="300"/> <img src="https://ww4.sinaimg.cn/large/006tKfTcly1fk7twywj5oj30u01fewka.jpg" width="292"/>
+<img src="Img/Demo_2.gif" height="542"/> <img src="Img/Demo.jpeg" height="542"/>
 </p>
 
 ## 支持的特性
