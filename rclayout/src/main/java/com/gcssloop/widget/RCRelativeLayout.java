@@ -152,7 +152,8 @@ public class RCRelativeLayout extends RelativeLayout implements Checkable, RCAtt
 
     @Override
     public void invalidate() {
-        mRCHelper.refreshRegion(this);
+        if (null != mRCHelper)
+            mRCHelper.refreshRegion(this);
         super.invalidate();
     }
 
