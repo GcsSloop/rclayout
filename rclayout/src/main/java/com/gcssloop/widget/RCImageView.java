@@ -85,16 +85,14 @@ public class RCImageView extends ImageView implements Checkable, RCAttrs {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
+        if (action == MotionEvent.ACTION_DOWN && !mRCHelper.mAreaRegion.contains((int) ev.getX(), (int) ev.getY())) {
+            return false;
+        }
         if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_UP) {
             refreshDrawableState();
         } else if (action == MotionEvent.ACTION_CANCEL) {
             setPressed(false);
             refreshDrawableState();
-        }
-        if (!mRCHelper.mAreaRegion.contains((int) ev.getX(), (int) ev.getY())) {
-            setPressed(false);
-            refreshDrawableState();
-            return false;
         }
         return super.dispatchTouchEvent(ev);
     }
