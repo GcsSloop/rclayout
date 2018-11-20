@@ -108,7 +108,7 @@ RCLayout 默认对自身背景剪裁，但是可以通过设置 clip_background 
 >
 > 例如：绘制一个Path，其中包含一个圆形，在 9.0 之前，它的刷新计算区域为红框包括的区域，在 9.0 之后则直接是一个圆形。
 >
-> <img src="img/path_in_9.0.jpg" width=600 />
+> <img src="Img/path_in_9.0.jpg" width=600 />
 >
 > **这种优化就间接的导致了部分 Xfermode 效果与之前不同。**
 
